@@ -38,8 +38,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Task task = taskList.get(position);
         holder.taskName.setText(task.getTaskname());
-        holder.starttime.setText(task.getStarttime());
-        holder.deadline.setText(task.getDeadline());
+        holder.starttime.setText(String.valueOf(task.getStarttime()));
+        holder.deadline.setText(String.valueOf(task.getDeadline()));
         holder.status.setText(task.getStatus());
         holder.dateAdded.setText(task.getDateadded());
 
