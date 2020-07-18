@@ -1,5 +1,7 @@
 package com.example.todolist;
 
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.todolist.data.DatabaseHandler;
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -62,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
     private void createPopup() {
         builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.popup,null);
-        tasks = view.findViewById(R.id.tasks);
-        startime =view.findViewById(R.id.starttime);
-        deadline = view.findViewById(R.id.deadline);
-        status = view.findViewById(R.id.status);
+        tasks = view.findViewById(R.id.tasks_pop);
+        startime =view.findViewById(R.id.starttime_pop);
+        deadline = view.findViewById(R.id.deadline_pop);
+        status = view.findViewById(R.id.status_pop);
         saveButton = view.findViewById(R.id.saveStatus);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +106,18 @@ public class MainActivity extends AppCompatActivity {
         databaseHandler.addTask(task);
 
         Snackbar.make(view,"Item Saved",Snackbar.LENGTH_SHORT).show();
+
+        //to delay and dismiss the dialog box and to also got to the new activity
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //code to be run
+                dialog.dismiss();
+                //to move next screen
+                startActivity(new Intent(MainActivity.this, ListActiviti.class));
+
+            }
+        },800);
 
     }
 

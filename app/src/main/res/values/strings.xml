@@ -16,4 +16,5 @@
     <string name="hint_start">When it starts</string>
     <string name="hint_status">Pending OR Completed</string>
     <string name="saveStatus">Save Status</string>
+    <string name="test">whatup</string>
 </resources>

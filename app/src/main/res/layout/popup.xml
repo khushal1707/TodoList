@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <EditText
-                android:id="@+id/tasks"
+                android:id="@+id/tasks_pop"
                 android:layout_below="@+id/title"
                 android:layout_width="match_parent"
                 android:hint="@string/hint_task"
@@ -30,29 +30,29 @@
                 android:autofillHints="none"
                 android:inputType="textAutoCorrect" />
             <EditText
-                android:id="@+id/deadline"
-                android:layout_below="@+id/starttime"
+                android:id="@+id/deadline_pop"
+                android:layout_below="@+id/starttime_pop"
                 android:layout_width="match_parent"
                 android:hint="@string/hint_deadline"
                 android:layout_height="wrap_content"
                 android:inputType="datetime"/>
             <EditText
-                android:id="@+id/starttime"
-                android:layout_below="@+id/tasks"
+                android:id="@+id/starttime_pop"
+                android:layout_below="@+id/tasks_pop"
                 android:layout_width="match_parent"
                 android:hint="@string/hint_start"
                 android:layout_height="wrap_content"
                 android:inputType="datetime"/>
             <EditText
-                android:id="@+id/status"
-                android:layout_below="@+id/deadline"
+                android:id="@+id/status_pop"
+                android:layout_below="@+id/deadline_pop"
                 android:layout_width="match_parent"
                 android:hint="@string/hint_status"
                 android:layout_height="wrap_content"
                 android:inputType="textAutoCorrect"/>
             <Button
                 android:id="@+id/saveStatus"
-                android:layout_below="@+id/status"
+                android:layout_below="@+id/status_pop"
                 android:layout_marginEnd="5dp"
                 android:textSize="14sp"
                 android:textStyle="bold"
