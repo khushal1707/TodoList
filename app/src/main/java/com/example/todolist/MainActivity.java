@@ -42,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         databaseHandler = new DatabaseHandler(this);
+
+        bypassActivity();
 
         //checking if task is saved
 
@@ -62,7 +66,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void createPopup() {
+    private void bypassActivity() {
+        if(databaseHandler.getTaskCount()>0){
+            startActivity(new Intent(MainActivity.this,ListActiviti.class));
+            finish();
+        }
+    }
+
+    public void createPopup() {
         builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.popup,null);
         tasks = view.findViewById(R.id.tasks_pop);
@@ -70,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         deadline = view.findViewById(R.id.deadline_pop);
         status = view.findViewById(R.id.status_pop);
         saveButton = view.findViewById(R.id.saveStatus);
-        saveButton.setOnClickListener(new View.OnClickListener() {
+         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!tasks.getText().toString().isEmpty() &&
@@ -115,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.dismiss();
                 //to move next screen
                 startActivity(new Intent(MainActivity.this, ListActiviti.class));
+
 
             }
         },800);

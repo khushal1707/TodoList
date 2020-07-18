@@ -6,42 +6,58 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="15dp">
 
-            <TextView
+            <TableRow
                 android:layout_width="wrap_content"
-                android:id="@+id/taskName_list"
-                android:text="@string/app_name"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/dateAdded_list"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/editButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@android:drawable/ic_menu_edit" />
+
+                <Button
+                    android:id="@+id/deleteBut"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@android:drawable/ic_menu_delete" />
+            </TableRow>
 
             <TextView
                 android:id="@+id/startime_list"
-                android:layout_width="63dp"
-                android:layout_height="33dp"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/taskName_list"
                 android:text="@string/app_name"
                 android:textSize="16sp"
                 android:textStyle="italic" />
 
             <TextView
-                android:layout_width="wrap_content"
                 android:id="@+id/deadline_list"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/startime_list"
                 android:text="@string/app_name"
                 android:textSize="16sp"
-                android:textStyle="italic"
-                android:layout_height="wrap_content"/>
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/status_list"
-                android:layout_width="wrap_content"
+                android:layout_width="271dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/deadline_list"
                 android:text="@string/app_name"
@@ -49,40 +65,24 @@
                 android:textStyle="italic" />
 
             <TextView
-                android:layout_width="wrap_content"
                 android:id="@+id/dateAdded_list"
+                android:layout_width="272dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/status_list"
                 android:text="@string/app_name"
                 android:textSize="16sp"
-                android:textStyle="italic"
-                android:layout_height="wrap_content"/>
+                android:textStyle="italic" />
 
-            <TableRow
-               android:layout_alignParentEnd="true"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/taskName_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_alignBottom="@+id/dateAdded_list"
-                android:orientation="horizontal">
-
-                <Button
-                   android:id="@+id/editButton"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@android:drawable/ic_menu_edit"/>
-
-                <Button
-                    android:id="@+id/deleteBut"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@android:drawable/ic_menu_delete"
-                    />
-            </TableRow>
+                android:text="@string/app_name"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
-        
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import com.example.todolist.model.Task;
 
 import org.w3c.dom.Text;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -38,10 +39,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Task task = taskList.get(position);
         holder.taskName.setText(task.getTaskname());
-        holder.starttime.setText(String.valueOf(task.getStarttime()));
-        holder.deadline.setText(String.valueOf(task.getDeadline()));
-        holder.status.setText(task.getStatus());
-        holder.dateAdded.setText(task.getDateadded());
+        holder.starttime.setText(MessageFormat.format("Starting on:  {0}", String.valueOf(task.getStarttime())));
+        holder.deadline.setText(MessageFormat.format("Ending on:  {0}", String.valueOf(task.getDeadline())));
+        holder.status.setText(MessageFormat.format("Status:  {0}", task.getStatus()));
+        holder.dateAdded.setText(MessageFormat.format("Added on:  {0}", task.getDateadded()));
 
 
     }
