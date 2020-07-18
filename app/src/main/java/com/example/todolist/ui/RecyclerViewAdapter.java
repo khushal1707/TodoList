@@ -1,6 +1,7 @@
 package com.example.todolist.ui;
 
 import android.content.Context;
+import android.icu.text.Transliterator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.todolist.R;
+import com.example.todolist.data.DatabaseHandler;
 import com.example.todolist.model.Task;
 
 import org.w3c.dom.Text;
@@ -31,8 +33,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row,parent,false);
-        return new ViewHolder(view,context);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
+        return new ViewHolder(view, context);
     }
 
     @Override
@@ -64,12 +66,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public int id;
 
 
-        public ViewHolder(@NonNull View itemView,Context ctx) {
+        public ViewHolder(@NonNull View itemView, Context ctx) {
             super(itemView);
             context = ctx;
             taskName = itemView.findViewById(R.id.taskName_list);
             starttime = itemView.findViewById(R.id.startime_list);
-            deadline= itemView.findViewById(R.id.deadline_list);
+            deadline = itemView.findViewById(R.id.deadline_list);
             status = itemView.findViewById(R.id.status_list);
             dateAdded = itemView.findViewById(R.id.dateAdded_list);
 
@@ -83,12 +85,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View view) {
-            switch (view.getId()){
+
+            int position = getAdapterPosition();
+            switch (view.getId()) {
                 case R.id.editButton:
 
                     break;
                 case R.id.deleteBut:
+                    position = getAdapterPosition();
+                    Task task = taskList.get(position);
+                    deleteTask(task.getId());
+                    break;
             }
         }
+
+
+        //must be under viewholder to access getAdapterposition
+        private void deleteTask(int id) {
+            DatabaseHandler db = new DatabaseHandler(context);
+            db.deleteTask(id);
+            taskList.remove(getAdapterPosition());
+            //worked only with getAdapterPosition not with id
+            notifyItemRemoved(getAdapterPosition());
+
+        }
     }
+
 }
