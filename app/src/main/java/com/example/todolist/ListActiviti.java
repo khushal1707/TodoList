@@ -65,7 +65,6 @@ public class ListActiviti extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createPopup();
-
             }
         });
     }
@@ -124,7 +123,7 @@ public class ListActiviti extends AppCompatActivity {
                 public void run() {
                     //code to be run
                     dialog.dismiss();
-                    //to move next screen
+                    //to move next screen// But here in the same activity
                     startActivity(new Intent(ListActiviti.this , ListActiviti.class));
                     finish();
 
